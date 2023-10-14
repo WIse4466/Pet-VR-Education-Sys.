@@ -970,6 +970,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxRaycastHits: 64
+--- !u!1 &1017610714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1867371545873032, guid: 75436b59ee0912d4aab25e378cb5c08a,
+    type: 3}
+  m_PrefabInstance: {fileID: 834890969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1017610715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017610714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b4e9c3c610b61488cdc41a97cd977d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1034224432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,18 +1411,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1556987931}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1961580242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961580239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b0768d2688c6d4bb8c02c80656ed13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1961580243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,7 +1458,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1961580242}
+        - m_Target: {fileID: 0}
           m_MethodName: 
           m_Mode: 1
           m_Arguments:
@@ -1489,7 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  speed: 1
+  speed: 1.5
   animator: {fileID: 0}
   acceleration: 0.1
   audioSource: {fileID: 0}
