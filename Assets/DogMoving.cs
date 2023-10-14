@@ -19,7 +19,10 @@ public class DogMoving : MonoBehaviour
     int VelocityHash;
 
     public AudioSource audioSource;
+    public AudioClip[] audios;
     public TextMeshProUGUI Information;
+
+    public bool feedingMode = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,15 +38,16 @@ public class DogMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(lookAt == true)
+        if(lookAt == true && feedingMode == false)
         {
             Debug.Log("不要動");
+            animator.SetBool("turn", true);
             Time.timeScale = 0;
             //audioSource = GetComponent<AudioSource>();
             audioSource.Pause();
             Information.gameObject.SetActive(true);
         }
-        else
+        else if(feedingMode == false)
         {
             Time.timeScale = 1.0f;
             animator.SetBool("turn", false);
@@ -56,12 +60,26 @@ public class DogMoving : MonoBehaviour
                 audioSource.Play();
             }
             Information.gameObject.SetActive(false);
+        }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            feedingMode = true;
+            animator.SetBool("feeding", true);
+            audioSource.Pause();
+            feedback();
+            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Arm_Dog|Death_1"))
+            {
+                print("動畫結束");
+                Information.gameObject.SetActive(true);
+            }
         }
     }
 
     void MovingOnRoad()
     {
+        if(feedingMode == true)
+        { return; }
         
         //設定移動路徑的起終點
         Vector3 startPosition = waypoints[currentWaypoint].transform.position;
@@ -79,12 +97,12 @@ public class DogMoving : MonoBehaviour
             control = (currentTimeOnPath / totalTimeForPath)*acceleration;
         }
         animator.SetFloat("control", control);
-        Debug.Log("blend值" + control);
+        /*Debug.Log("blend值" + control);
 
         Debug.Log("預計總花費時間" + totalTimeForPath);
         Debug.Log("在這條路上跑多久了" + currentTimeOnPath);
         Debug.Log("狗的位子" + gameObject.transform.position);
-        Debug.Log("終點的位子" + endPosition);
+        Debug.Log("終點的位子" + endPosition);*/
         if (totalTimeForPath - currentTimeOnPath <= 0.02)
         {
             Debug.Log("抵達終點了");
@@ -98,7 +116,7 @@ public class DogMoving : MonoBehaviour
                 //做動畫
                 animator.SetBool("turn", true);
                 animator.SetFloat("control", 1);
-
+                audioSource.clip = audios[0];
                 audioSource.Play();
             }
             else
@@ -126,6 +144,32 @@ public class DogMoving : MonoBehaviour
         //gameObject.transform.localEulerAngles = new Vector3(0.0f, rotationAngle, 0.0f);
         gameObject.transform.rotation = Quaternion.Euler(0.0f, rotationAngle, 0.0f);
         Debug.Log("轉了"+gameObject.transform.rotation);
+    }
+
+    public void feedback()
+    {
+        int type = 1;
+        switch(type)
+        {
+            case 0:
+                animator.SetInteger("feedback type", 0);
+                Information.SetText("狗死了");
+                audioSource.clip = audios[1];
+                audioSource.Play();
+                break;
+            case 1:
+                animator.SetInteger("feedback type", 1);
+                Information.SetText("很棒");
+                audioSource.clip = audios[2];
+                audioSource.Play();
+                break;
+            case 2:
+                animator.SetInteger("feedback type", 2);
+                break;
+            case 3:
+                animator.SetInteger("feedback type", 3);
+                break;
+        }
     }
 
     public void test()
