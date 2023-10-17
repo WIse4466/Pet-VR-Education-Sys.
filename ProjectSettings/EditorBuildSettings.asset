@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Upset Scene.unity
     guid: 462f8f1ce6962234eb676bcea905b136
+  - enabled: 1
+    path: Assets/Scenes/Feed Room 1.unity
+    guid: 5353c47822fa5954e92d726b5ae66b00
   m_configObjects: {}
