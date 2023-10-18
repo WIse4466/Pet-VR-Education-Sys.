@@ -148,7 +148,7 @@ public class DogMoving : MonoBehaviour
 
     public void feedback()
     {
-        int type = 1;
+        int type = 0;
         switch(type)
         {
             case 0:
