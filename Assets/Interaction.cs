@@ -30,9 +30,7 @@ public class Interaction : MonoBehaviour
         {
             animator.SetBool("feeding mode", true);
             animator.SetInteger("correct", answer);
-            move = true;
-            startMovingTime = Time.time;
-            endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            StartCoroutine(AfterFeeding(4.0f));
         }
 
         if(move == true)
@@ -63,14 +61,8 @@ public class Interaction : MonoBehaviour
 
     public void moving()
     {
-        //transform.Translate(Vector3.back * speed, Space.World);
         float moveDistance = 1f;
-        //target = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveDistance);
-        //transform.position = Vector3.MoveTowards(transform.position, target, speed);
-        //transform.position = Vector3.Lerp(transform.position, target, t);
-
-        
-
+    
         //設定移動路徑的起終點
         Vector3 startPosition = gameObject.transform.position;
         //Vector3 endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - moveDistance);
@@ -85,5 +77,13 @@ public class Interaction : MonoBehaviour
         Debug.Log("在這條路上跑多久了" + currentTimeOnPath);
         Debug.Log("狗的位子" + gameObject.transform.position);
         Debug.Log("終點的位子" + endPosition);
+    }
+
+    IEnumerator AfterFeeding(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        move = true;
+        startMovingTime = Time.time;
+        endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
     }
 }
