@@ -551,7 +551,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Shepherd_color.001
-    second: {fileID: 2100000, guid: 12fa82e87dd19414d9e703c6653ae6e4, type: 2}
+    second: {fileID: 2100000, guid: a16786e3b9d289749a4edc31cdb939d0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -527,7 +527,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Doberman
-    second: {fileID: 2100000, guid: 58a189984e379a04ea5965fa4222f1f6, type: 2}
+    second: {fileID: 2100000, guid: dffe35e67a5f29249b71a9c6e9369b7c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
